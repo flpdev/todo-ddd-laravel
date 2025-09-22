@@ -1,61 +1,208 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📋 Todo List API - DDD Laravel
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Uma API RESTful moderna para gerenciamento de tarefas (Todo List) construída com **Laravel 12** seguindo os princípios de **Domain-Driven Design (DDD)** e **Clean Architecture**.
 
-## About Laravel
+## 🚀 Sobre o Projeto
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Este projeto foi desenvolvido como uma demonstração prática de conceitos avançados de arquitetura de software, aplicando padrões de **Clean Code** e **DDD** em uma aplicação Laravel real. A API oferece funcionalidades completas de autenticação e gerenciamento de tarefas.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### ✨ Características Principais
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+-   🏗️ **Arquitetura DDD** - Separação clara entre Domain, Application e Infrastructure
+-   🔐 **Autenticação JWT** - Utilizando Laravel Sanctum
+-   📡 **API RESTful** - Endpoints versionados (v1)
+-   📝 **Clean Code** - Código limpo e bem estruturado
+-   🔄 **Migrations** - Controle de versão do banco de dados
 
-## Learning Laravel
+## 🛠️ Tecnologias Utilizadas
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+-   **PHP** 8.2+
+-   **Laravel** 12.0
+-   **Laravel Sanctum** 4.2 (Autenticação API)
+-   **MySQL** (Banco de dados)
+-   **Laravel Pint** (Code Style)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## 🏗️ Arquitetura DDD
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+O projeto segue uma estrutura de Domain-Driven Design organizada da seguinte forma:
 
-## Laravel Sponsors
+```
+app/
+├── Application/        # Casos de uso e serviços de aplicação
+│   ├── Todo/
+│   └── User/
+├── Domain/            # Entidades e regras de negócio
+│   ├── Todo/
+│   └── User/
+├── Http/              # Controllers e Requests (Interface)
+│   ├── Controllers/
+│   └── Requests/
+├── Infrastructure/    # Implementações concretas
+│   └── Repositories/
+└── Models/           # Eloquent Models (Adaptadores)
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 📋 Funcionalidades
 
-### Premium Partners
+### 🔐 Autenticação
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+-   `POST /api/v1/auth/register` - Registro de usuário
+-   `POST /api/v1/auth/login` - Login de usuário
 
-## Contributing
+### ✅ Gerenciamento de Tarefas
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+-   `GET /api/v1/todos` - Listar todas as tarefas do usuário
+-   `POST /api/v1/todos` - Criar nova tarefa
+-   `GET /api/v1/todos/{id}` - Visualizar tarefa específica
+-   `PUT /api/v1/todos/{id}` - Atualizar tarefa
+-   `DELETE /api/v1/todos/{id}` - Remover tarefa
 
-## Code of Conduct
+## 🚀 Como Executar
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Pré-requisitos
 
-## Security Vulnerabilities
+-   PHP 8.2 ou superior
+-   Composer
+-   MySQL
+-   Node.js (opcional, para assets)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Instalação
 
-## License
+1. **Clone o repositório**
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+    ```bash
+    git clone https://github.com/flpdev/todo-ddd-laravel.git
+    cd todo-ddd-laravel
+    ```
+
+2. **Instale as dependências**
+
+    ```bash
+    composer install
+    ```
+
+3. **Configure o ambiente**
+
+    ```bash
+    cp .env.example .env
+    php artisan key:generate
+    ```
+
+4. **Configure o banco de dados**
+
+    Edite o arquivo `.env` com suas credenciais:
+
+    ```env
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=laravel_todo_ddd
+    DB_USERNAME=root
+    DB_PASSWORD=
+    ```
+
+5. **Execute as migrations**
+
+    ```bash
+    php artisan migrate
+    ```
+
+6. **Inicie o servidor**
+    ```bash
+    php artisan serve
+    ```
+
+A API estará disponível em `http://localhost:8000`
+
+## 📡 Exemplos de Uso da API
+
+### Registro de Usuário
+
+```bash
+curl -X POST http://localhost:8000/api/v1/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "João Silva",
+    "email": "joao@example.com",
+    "password": "password123",
+    "password_confirmation": "password123"
+  }'
+```
+
+### Login
+
+```bash
+curl -X POST http://localhost:8000/api/v1/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "joao@example.com",
+    "password": "password123"
+  }'
+```
+
+### Criar Tarefa
+
+```bash
+curl -X POST http://localhost:8000/api/v1/todos \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer {seu_token}" \
+  -d '{
+    "title": "Estudar DDD",
+    "description": "Aprofundar conhecimentos em Domain-Driven Design",
+    "completed": false
+  }'
+```
+
+## 📚 Padrões e Conceitos Aplicados
+
+-   **Domain-Driven Design (DDD)** - Organização do código focada no domínio do negócio
+-   **Clean Architecture** - Separação de responsabilidades em camadas
+-   **Repository Pattern** - Abstração da camada de dados
+-   **Use Cases** - Encapsulamento da lógica de negócio
+-   **Dependency Injection** - Inversão de dependências
+-   **API Versioning** - Versionamento de endpoints
+-   **Token-based Authentication** - Autenticação stateless
+
+## 🎯 Objetivos de Aprendizado
+
+Este projeto demonstra competências em:
+
+-   ✅ Arquitetura de software moderna
+-   ✅ Princípios SOLID
+-   ✅ Design Patterns
+-   ✅ APIs RESTful
+-   ✅ Autenticação e autorização
+-   ✅ Clean Code
+
+## 📈 Próximas Implementações
+
+-   [ ] Documentação OpenAPI/Swagger
+-   [ ] Cache com Redis
+-   [ ] Rate Limiting
+-   [ ] Logs estruturados
+-   [ ] Docker containerization
+-   [ ] CI/CD Pipeline
+
+## 🤝 Contribuições
+
+Contribuições são bem-vindas! Sinta-se à vontade para:
+
+1. Fazer um fork do projeto
+2. Criar uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a branch (`git push origin feature/AmazingFeature`)
+5. Abrir um Pull Request
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+## 👨‍💻 Autor
+
+**Felipe Developer**
+
+-   GitHub: [@flpdev](https://github.com/flpdev)
+
+---
+
+⭐ Se este projeto te ajudou de alguma forma, considere dar uma estrela!
