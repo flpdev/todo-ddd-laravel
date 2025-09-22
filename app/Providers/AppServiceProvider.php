@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Domain\Todo\TodoRepositoryInterface;
 use App\Domain\User\UserRepositoryInterface;
+use App\Infrastructure\Repositories\EloquentTodoRepository;
 use App\Infrastructure\Repositories\EloquentUserRepository;
 use Illuminate\Support\ServiceProvider;
 
@@ -15,7 +17,12 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind(
             UserRepositoryInterface::class,
-            EloquentUserRepository::class
+            EloquentUserRepository::class,
+        );
+
+        $this->app->bind(
+            TodoRepositoryInterface::class,
+            EloquentTodoRepository::class
         );
     }
 
